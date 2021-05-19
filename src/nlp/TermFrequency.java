@@ -64,6 +64,7 @@ public class TermFrequency {
                     // list.get(i).getCount());
                     sum += list.get(i).getCount();
                 }
+                list.sort(new WordCompare());
                 // tf の結果をファイルに保存する
                 String outputFilename = "data/00" + file_i + "tf.txt";
                 FileWriter fw = new FileWriter(outputFilename);
