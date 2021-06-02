@@ -1,130 +1,56 @@
 package nlp;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 class Word {
-    private String hyousoukei = null;// 表層形
-    private String hinshi = null;// 品詞
-    private String hinshi1 = null;// 品詞細分類 1
-    private String hinshi2 = null;// 品詞細分類 2
-    private String hinshi3 = null;// 品詞細分類 3
-    private String katsuyoKata = null;// 活用型
-    private String katsuyoKei = null;// 活用形
-    private String genkei = null;// 原形
-    private String yomi = null;// 読み
-    private String hatsuon = null;// 発音
+    private Map<String, String> info = new HashMap<String, String>();
 
-    public String getHyousoukei() {
-        return this.hyousoukei;
+    public Word() {
+        this.info.put("hyousoukei", null);  // 表層形
+        this.info.put("hinshi", null);      // 品詞
+        this.info.put("hinshi1", null);     // 品詞細分類1
+        this.info.put("hinshi2", null);     // 品詞細分類2
+        this.info.put("hinshi3", null);     // 品詞細分類3
+        this.info.put("katsuyoKata", null); // 活用型
+        this.info.put("katsuyoKei", null);  // 活用形
+        this.info.put("genkei", null);      // 原形
+        this.info.put("yomi", null);        // 読み
+        this.info.put("hatsuon", null);     // 発音
     }
 
-    public void setHyousoukei(String hyousoukei) {
-        this.hyousoukei = hyousoukei;
+    public void infoValueSet(String key, String value) {
+        this.info.put(key, value);
     }
 
-    public String getHinshi() {
-        return this.hinshi;
+    public String infoValueGet(String key) {
+        return this.info.get(key);
     }
 
-    public void setHinshi(String hinshi) {
-        this.hinshi = hinshi;
+    public Map<String, String> getInfo() {
+        return this.info;
     }
 
-    public String getHinshi1() {
-        return this.hinshi1;
-    }
+    public boolean equals(Word arg) {
+        Map<String, String> thisInfo = this.info;
+        Map<String, String> argInfo = arg.getInfo();
 
-    public void setHinshi1(String hinshi1) {
-        this.hinshi1 = hinshi1;
-    }
-
-    public String getHinshi2() {
-        return this.hinshi2;
-    }
-
-    public void setHinshi2(String hinshi2) {
-        this.hinshi2 = hinshi2;
-    }
-
-    public String getHinshi3() {
-        return this.hinshi3;
-    }
-
-    public void setHinshi3(String hinshi3) {
-        this.hinshi3 = hinshi3;
-    }
-
-    public String getKatsuyoKata() {
-        return this.katsuyoKata;
-    }
-
-    public void setKatsuyoKata(String katsuyoKata) {
-        this.katsuyoKata = katsuyoKata;
-    }
-
-    public String getKatsuyoKei() {
-        return this.katsuyoKei;
-    }
-
-    public void setKatsuyoKei(String katsuyoKei) {
-        this.katsuyoKei = katsuyoKei;
-    }
-
-    public String getGenkei() {
-        return this.genkei;
-    }
-
-    public void setGenkei(String genkei) {
-        this.genkei = genkei;
-    }
-
-    public String getYomi() {
-        return this.yomi;
-    }
-
-    public void setYomi(String yomi) {
-        this.yomi = yomi;
-    }
-
-    public String getHatsuon() {
-        return this.hatsuon;
-    }
-
-    public void setHatsuon(String hatsuon) {
-        this.hatsuon = hatsuon;
-    }
-
-    public boolean equals(Object obj) {
-        // オブジェクトが null の場合，不一致
-        if (obj == null) {
-            return false;
+        Iterator<String> thisItr = thisInfo.keySet().iterator();
+        Iterator<String> argItr = argInfo.keySet().iterator();
+        while (thisItr.hasNext() || argItr.hasNext()) {
+            String thisValue = thisInfo.get(thisItr.next());
+            String argValue = argInfo.get(argItr.next());
+            if (thisValue == null && argValue == null) {
+                continue;
+            }
+            if (thisValue == null || argValue == null) {
+                return false;
+            }
+            if (!argValue.equals(thisValue)) {
+                return false;
+            }
         }
-        // オブジェクトの型が異なる場合，不一致
-        if (!(obj instanceof Word)) {
-            return false;
-        }
-        // オブジェクトの全てのフィールドが一致している場合，一致
-        if (((((Word) obj).getHyousoukei() == null && this.getHyousoukei() == null)
-                || ((Word) obj).getHyousoukei().equals(this.getHyousoukei()))
-                && ((((Word) obj).getHinshi() == null && this.getHinshi() == null)
-                        || ((Word) obj).getHinshi().equals(this.getHinshi()))
-                && ((((Word) obj).getHinshi1() == null && this.getHinshi1() == null)
-                        || ((Word) obj).getHinshi1().equals(this.getHinshi1()))
-                && ((((Word) obj).getHinshi2() == null && this.getHinshi2() == null)
-                        || ((Word) obj).getHinshi2().equals(this.getHinshi2()))
-                && ((((Word) obj).getHinshi3() == null && this.getHinshi3() == null)
-                        || ((Word) obj).getHinshi3().equals(this.getHinshi3()))
-                && ((((Word) obj).getKatsuyoKata() == null && this.getKatsuyoKata() == null)
-                        || ((Word) obj).getKatsuyoKata().equals(this.getKatsuyoKata()))
-                && ((((Word) obj).getKatsuyoKei() == null && this.getKatsuyoKei() == null)
-                        || ((Word) obj).getKatsuyoKei().equals(this.getKatsuyoKei()))
-                && ((((Word) obj).getGenkei() == null && this.getGenkei() == null)
-                        || ((Word) obj).getGenkei().equals(this.getGenkei()))
-                && ((((Word) obj).getYomi() == null && this.getYomi() == null)
-                        || ((Word) obj).getYomi().equals(this.getYomi()))
-                && ((((Word) obj).getHatsuon() == null && this.getHatsuon() == null)
-                        || ((Word) obj).getHatsuon().equals(this.getHatsuon()))) {
-            return true;
-        }
-        // そのほかは不一致
-        return false;
+        return true;
     }
 }
