@@ -29,7 +29,6 @@ public class TermFrequency {
             return true;
 
         // 品詞によってスキップする
-        System.out.println("hinshi[" + word.infoValueGet("hyousoukei") + "]: " + hinshi);
         String[] skipHinshi = { "助詞", "助動詞", "接続詞", "記号" };
         for (int i = 0; i < skipHinshi.length; i++) {
             if (hinshi == null)
