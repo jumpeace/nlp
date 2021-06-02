@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class TermFrequency {
     ArrayList<TfCount> list = new ArrayList<TfCount>();
