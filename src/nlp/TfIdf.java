@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 
-public class TfIdf {
+class TfIdf {
     ArrayList<TfIdfCount> list = new ArrayList<TfIdfCount>();
 
     TermFrequency tf;

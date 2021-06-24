@@ -2,7 +2,7 @@ package nlp;
 
 import java.util.Comparator;
 
-public class TfIdfCompare implements Comparator<TfIdfCount> {
+class TfIdfCompare implements Comparator<TfIdfCount> {
     @Override
     public int compare(TfIdfCount tic1, TfIdfCount tic2) {
         if (tic1.getTfIdf() < tic2.getTfIdf())

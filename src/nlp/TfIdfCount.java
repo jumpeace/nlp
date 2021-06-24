@@ -1,6 +1,6 @@
 package nlp;
 
-public class TfIdfCount {
+class TfIdfCount {
     private Word word;
     private Double tf;
     private Double idf;

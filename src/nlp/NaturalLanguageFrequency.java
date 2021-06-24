@@ -1,6 +1,6 @@
 package nlp;
 
-public class NaturalLanguageFrequency {
+class NaturalLanguageFrequency {
     public static void main(String[] args) {
         int FILE_NUM = 100;
         System.out.println("TF導出");

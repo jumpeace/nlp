@@ -1,6 +1,6 @@
 package nlp;
 
-public class DfCount extends WordCount {
+class DfCount extends WordCount {
     private Double idf;
     
     DfCount(Word word, Integer count) {

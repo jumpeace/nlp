@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 
-public class DocumentFrequency {
+class DocumentFrequency {
     // DFをカウントするためのデータ格納領域の定義
     ArrayList<DfCount> list = new ArrayList<DfCount>();
 

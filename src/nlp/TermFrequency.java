@@ -7,10 +7,9 @@ import java.io.InputStreamReader;
 
 import java.util.ArrayList;
 
-public class TermFrequency {
+class TermFrequency {
     ArrayList<TfCount> list = new ArrayList<TfCount>();
 
-    // tf値の本来の意味にそぐわない単語を取り除く
     private boolean doesSkipWord(Word word) {
         String hyousoukei = word.infoValueGet("hyousoukei");
         String hinshi = word.infoValueGet("hinshi");
@@ -21,8 +20,8 @@ public class TermFrequency {
         if (hyousoukei.length() == 0)
             return true;
 
-        // アルファベット1文字をスキップする
-        if (hyousoukei.matches("[a-zA-Z]{1}"))
+        // アルファベットのみの文字をスキップする
+        if (hyousoukei.matches("^[a-zA-Z]*$"))
             return true;
 
         // 品詞によってスキップする
@@ -86,16 +85,16 @@ public class TermFrequency {
                     if (this.doesSkipWord(wo))
                         continue;
 
-                    boolean doesExist = false;
+                    boolean doesExists = false;
                     for (int i = 0; i < list.size(); i++) {
                         if (list.get(i).getWord().equals(wo)) {
                             list.get(i).setCount(list.get(i).getCount() + 1);
-                            doesExist = true;
+                            doesExists = true;
                             break;
                         }
                     }
                     // リストにエントリが無かったときは，新しい語としてリストに追加する
-                    if (!doesExist) {
+                    if (!doesExists) {
                         list.add(new TfCount(wo, Integer.valueOf(1)));
                     }
                 }
@@ -103,7 +102,6 @@ public class TermFrequency {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // 今のリストのエントリをすべて表示する
         int sum = 0;
         for (int i = 0; i < list.size(); i++) {
             sum += list.get(i).getCount();

@@ -1,6 +1,6 @@
 package nlp;
 
-public class TfCount extends WordCount {
+class TfCount extends WordCount {
     Double tf;// 計数値を全語数で割った TF 値
 
     TfCount(Word word, Integer count) {
